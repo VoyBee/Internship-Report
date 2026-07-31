@@ -5,53 +5,28 @@ weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 8 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Finalize container packaging (Docker) and automate application deployment pipelines (CI/CD GitHub Actions) to **Amazon EC2** servers.
+* Optimize and conduct final review testing for the entire application: **Admin Portal** (Doctor management, RBAC configuration), **Doctor Portal** (consultation lookups & opening Pre-consultation Reports from S3), and **Patient Portal** (appointment viewing & AI RAG consultation chat).
+* Configure custom domain names, HTTPS/SSL security certificates, and optimize AWS Cloud infrastructure operational costs.
+* Prepare technical documentation (Architecture Document), Swagger API documentation, and User Manuals for Administrators & Doctors; conduct final project hand-off and acceptance.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Mon | - Construct optimized multi-stage build Dockerfiles and docker-compose configurations for both NestJS Backend and Next.js Frontend.<br>- Configure CI/CD pipelines (GitHub Actions) to automate Docker image builds and application deployment to AWS EC2 servers upon code pushes to the main branch. | 07/20/2026 | 07/20/2026 | [Here](https://docs.docker.com/) |
+| Tue | - Configure AWS production cloud infrastructure: Set up Nginx Reverse Proxy, HTTPS/SSL, and install auto-renewing SSL certificates.<br>- Review **AWS CloudWatch Logs** combined with log integration from **Langfuse** to monitor server incidents and track LLM operational performance. | 07/21/2026 | 07/21/2026 | [Here](https://docs.aws.amazon.com/) |
+| Wed | - Optimize portal management interfaces based on the new Business Flow:<br>&emsp;+ **Admin Portal (Desktop View):** Optimize Doctor onboarding/management flows, automated account role assignment via AWS Cognito (`cognito:groups`), and overview analytics viewing.<br>&emsp;+ **Doctor Portal (Desktop View):** Optimize daily consultation list interfaces and features to download/open **Pre-consultation Report** files saved in Amazon S3. | 07/22/2026 | 07/22/2026 | Internal Docs |
+| Thu | - Perform a complete final system smoke test on Production (Production Smoke Test) ensuring connections between EC2, RDS PostgreSQL, Cognito, S3, AWS Bedrock KB, ViMQ, GPT-4o-mini, and Langfuse operate seamlessly.<br>- Optimize Next.js Frontend build sizes and caching mechanisms to minimize cloud operational expenses. | 07/23/2026 | 07/23/2026 | Internal Test |
+| Fri | - Write system hand-off documentation: Architecture Document, Installation/Operation Guides, and User Manuals for Administrators (Admin Portal) & Doctors (Doctor Portal).<br>- Summarize the project, evaluate achievements, and execute final project acceptance. | 07/24/2026 | 07/24/2026 | Project Deliverables |
 
 
 ### Week 8 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully packaged the application with Docker Containers and established a 100% automated CI/CD pipeline (GitHub Actions) for building & deploying the system to AWS EC2 servers.
+* The system operates stably in Production with full HTTPS/SSL security certificates, secure VPC network connectivity, and AWS CloudWatch monitoring combined with Langfuse.
+* Smoothly completed business flows across all Portals: Administrators provision and assign RBAC roles to Doctors seamlessly via Cognito; Doctors effortlessly look up daily consultation lists and quickly open AI summary consultation reports (Pre-consultation Reports) from Amazon S3.
+* The anti-slot-conflict booking mechanism (Pessimistic Locking `FOR UPDATE` on RDS PostgreSQL) and AI RAG Chatbot router (LLM Intent Router + AWS Bedrock KB + GPT-4o-mini + ViMQ) perform with 100% accuracy.
+* Completed the full technical documentation suite (Architecture Document, Swagger API Spec), operational user guides, and achieved project hand-off right on schedule.

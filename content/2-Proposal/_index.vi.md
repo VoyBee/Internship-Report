@@ -5,104 +5,103 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+Tại phần này, bạn sẽ thấy bản tóm tắt đề xuất dự án phát triển hệ thống Y tế số, bao gồm mục tiêu, kiến trúc hạ tầng AWS Cloud, luồng nghiệp vụ cốt lõi và ước tính ngân sách vận hành.
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+# Smart Healthcare AI Triage & Appointment Booking Platform  
+## Giải pháp Cloud-native hỗ trợ Sàng lọc Bệnh Y khoa qua AI và Quản lý Lịch hẹn Trực tuyến  
 
 ### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+Smart Healthcare Platform được thiết kế nhằm hiện đại hóa quy trình tiếp nhận, giải đáp thắc mắc y tế ban đầu và hỗ trợ đặt lịch khám bệnh trực tuyến. Hệ thống ứng dụng kiến trúc **Generative AI & RAG (Retrieval-Augmented Generation)** kết hợp giữa **AWS Bedrock Knowledge Base**, mô hình trích xuất thực thể y tế **ViMQ** và LLM **GPT-4o-mini**, đồng thời hỗ trợ lưu trữ **Báo cáo tóm tắt cuộc trò chuyện (Pre-consultation Report)**. Nền tảng được xây dựng theo kiến trúc Cloud-native trên hạ tầng **AWS Cloud** (Cognito, EC2, RDS PostgreSQL, S3, CloudWatch), kết hợp hệ thống giám sát LLM chuyên dụng (**Langfuse**), phục vụ nhu cầu truy cập từ Bệnh nhân, Bác sĩ và Quản trị viên.  
 
 ### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+#### Vấn đề hiện tại  
+Các cơ sở y tế hiện nay thường gặp tình trạng quá tải tại quầy tiếp đón do bệnh nhân mất nhiều thời gian hỏi đáp thông tin cơ bản. Quy trình đặt lịch hẹn truyền thống qua điện thoại hoặc tại quầy dễ gây ra tình trạng trùng lịch (Double-booking) và thời gian chờ đợi kéo dài. Về phía Bác sĩ, việc theo dõi danh sách lịch hẹn và thông tin bệnh nhân đăng ký khám còn thủ công, thiếu sự tập trung.  
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+#### Giải pháp  
+Nền tảng cung cấp giải pháp toàn diện trải qua các giai đoạn nghiệp vụ khép kín:
+1. **Giai đoạn 1 - Thiết lập Hệ thống & Phân quyền (Auth Flow):** Admin quản lý và khởi tạo tài khoản trên hệ thống. **AWS Cognito** quản lý định danh tập trung (RBAC), hỗ trợ phân quyền rõ ràng cho các vai trò Patient, Doctor và Admin.
+2. **Giai đoạn 2 - Tiếp nhận & Khai báo Y tế (Onboarding):** Bệnh nhân đăng ký/đăng nhập tài khoản trên Mobile Web App. Bệnh nhân có thể cập nhật Form khai báo thông tin cá nhân, tiền sử bệnh nền và thông tin sức khỏe cơ bản.
+3. **Giai đoạn 3 - Trợ lý AI RAG Tư vấn Y tế (LLM Pipeline Flow):** 
+   - [LLM Intent Router] tiếp nhận câu hỏi và phân luồng xử lý: trích xuất thực thể y tế qua **ViMQ (Local Host)** và định tuyến ý định qua **AWS Bedrock Knowledge Base**.
+   - Mô hình **GPT-4o-mini** tổng hợp tri thức và phản hồi câu trả lời chính xác cho bệnh nhân.
+   - Toàn bộ luồng hội thoại được ghi log và giám sát hiệu năng/token qua **Langfuse** và **AWS CloudWatch**.
+4. **Giai đoạn 4 - Đặt Lịch Hẹn Chuyên Khoa (Booking Flow):** Bệnh nhân chủ động chọn bác sĩ và khung giờ khám trống. **AWS RDS PostgreSQL** áp dụng cơ chế khóa dòng (**Pessimistic Locking**) để triệt tiêu 100% rủi ro trùng lịch (Race Condition). Đoạn chat tư vấn có thể được tự động tổng hợp thành file **Pre-consultation Report** lưu vào **Amazon S3**.
+5. **Giai đoạn 5 - Tra cứu & Quản lý Lịch hẹn (Doctor/Patient Portal):** Bác sĩ đăng nhập vào Portal để xem danh sách lịch hẹn đã được đặt và tra cứu thông tin cá nhân/tiền sử bệnh của bệnh nhân.
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+#### Lợi ích và hoàn vốn đầu tư (ROI)  
+- Giảm 60% thời gian tư vấn ban đầu tại quầy nhờ Trợ lý AI RAG giải đáp thắc mắc tự động 24/7 với dữ liệu y tế chuẩn xác.
+- Giúp Bác sĩ dễ dàng nắm bắt lịch làm việc và danh sách bệnh nhân khám trong ngày.
+- Triệt tiêu 100% rủi ro trùng lịch khám nhờ cơ chế Pessimistic Locking ở tầng Database.
+- Đảm bảo chất lượng và độ an toàn của câu trả lời AI nhờ hệ thống giám sát LLM tập trung (**Langfuse**).
+- Tối ưu hóa chi phí vận hành hạ tầng nhờ khả năng co giãn linh hoạt của các dịch vụ AWS Cloud.  
 
 ### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+Hệ thống sử dụng kiến trúc Web Multi-tier kết hợp dịch vụ AI Hybrid (Cloud Services + External SaaS + Local Host Services).  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+![Smart Healthcare AI Architecture](/images/2-Proposal/architect-diagram.png)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+#### Dịch vụ AWS & Công nghệ sử dụng  
+- *Amazon Cognito*: Quản lý định danh, đăng nhập/đăng ký, phân quyền RBAC cho Bệnh nhân, Bác sĩ và Admin.
+- *AWS EC2*: Triển khai ứng dụng Web Frontend (Next.js) và Backend REST API / WebSocket Gateway / LLM Intent Router (NestJS) đóng gói qua Docker Containers.
+- *AWS Bedrock Knowledge Base*: Lưu trữ và truy xuất cơ sở tri thức y tế (RAG Pipeline) phục vụ tư vấn.
+- *External SaaS & Local Models*: **GPT-4o-mini** (sinh câu trả lời), **ViMQ Local Host** (trích xuất thực thể y tế NER) và **Langfuse** (giám sát metrics, latency, token của LLM).
+- *Amazon RDS (PostgreSQL)*: Cơ sở dữ liệu quan hệ lưu trữ thông tin bệnh nhân, bác sĩ, lịch hẹn với cơ chế Pessimistic Locking (`FOR UPDATE`).
+- *Amazon S3*: Lưu trữ tài nguyên tĩnh (Static assets), file báo cáo lịch sử chat tư vấn (PDF/JSON) và tệp đính kèm.
+- *AWS CloudWatch*: Thu thập log hệ thống Backend, EC2 và log tổng hợp từ Langfuse.  
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
-
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+#### Thiết kế thành phần  
+- *Giao diện Bệnh nhân (Next.js - Mobile View)*: Cho phép cập nhật thông tin cá nhân, trò chuyện với Trợ lý AI RAG để giải đáp thắc mắc y tế và thực hiện đặt lịch hẹn khám bệnh.
+- *Giao diện Bác sĩ (Next.js - Desktop View)*: Cho phép Bác sĩ đăng nhập, tra cứu danh sách các ca khám/lịch hẹn đã được bệnh nhân đặt và xem thông tin cá nhân/tiền sử y tế/file báo cáo tư vấn AI từ S3.
+- *Giao diện Quản trị (Admin Portal)*: Quản lý danh mục bác sĩ, tài khoản người dùng và xem báo cáo thống kê vận hành.
+- *Backend Services (NestJS)*: Xử lý Business Logic, LLM Intent Router, kết nối CSDL RDS PostgreSQL, S3 và các API AI (Bedrock, GPT-4o-mini, ViMQ, Langfuse).  
 
 ### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+**Các giai đoạn triển khai**  
+Dự án được triển khai trong vòng **8 tuần** (2 tháng) qua các giai đoạn:  
+1. *Tuần 1 - 2*: Phân tích yêu cầu Business Flow, thiết kế kiến trúc Cloud AWS Hybrid AI, thiết kế ERD CSDL và khởi tạo Base Source Code (Next.js + NestJS).
+2. *Tuần 3 - 4*: Cấu hình AWS Cognito (RBAC Auth Flow), triển khai hạ tầng AWS (EC2, S3, RDS PostgreSQL), tích hợp Prisma ORM và xử lý cơ chế chống trùng lịch (Pessimistic Locking).
+3. *Tuần 5 - 6*: Tích hợp RAG Pipeline (AWS Bedrock KB + GPT-4o-mini + ViMQ Local), kết nối Langfuse giám sát LLM, hoàn thiện giao diện tra cứu cho Bác sĩ & giao diện đặt lịch cho Bệnh nhân.
+4. *Tuần 7 - 8*: Tích hợp AWS CloudWatch, kiểm thử tải (Stress Test Concurrency Booking), đóng gói container Docker, cấu hình CI/CD và bàn giao nghiệm thu.
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+**Yêu cầu kỹ thuật**  
+- *Frontend*: Next.js, TailwindCSS, Socket.io-client, React Query.
+- *Backend*: NestJS Framework, Prisma ORM, TypeScript, Socket.io.
+- *Database*: PostgreSQL 16.x trên AWS RDS (`db.t4g.micro` - Private Subnet).
+- *AI/ML*: AWS Bedrock KB, OpenAI API (GPT-4o-mini), ViMQ Local Service, Langfuse.
+- *DevOps*: Docker, AWS CLI, GitHub Actions (CI/CD).
 
 ### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+- *Giai đoạn 1 (Tuần 1 - Tuần 2)*: Hoàn thiện thiết kế System Architecture & CSDL Schema theo Business Flow mới.
+- *Giai đoạn 2 (Tuần 3 - Tuần 4)*: Triển khai thành công hạ tầng AWS (Cognito Auth Flow, RDS PostgreSQL, S3, EC2) & Booking Concurrency API.
+- *Giai đoạn 3 (Tuần 5 - Tuần 6)*: Tích hợp thành công RAG Pipeline (Bedrock + GPT-4o-mini + ViMQ), giám sát Langfuse, hoàn thiện Portal tra cứu lịch cho Bác sĩ.
+- *Giai đoạn 4 (Tuần 7 - Tuần 8)*: Hoàn thành Stress Test đặt lịch đồng thời, triển khai CI/CD trên AWS Cloud và nghiệm thu dự án.
 
 ### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+Chi phí hạ tầng được ước tính trên môi trường AWS Cloud & AI Services cho giai đoạn thử nghiệm (MVP / Development Phase): 
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+*Chi phí hạ tầng & Dịch vụ hàng tháng*  
+- *AWS RDS (db.t4g.micro - PostgreSQL)*: ~12.00 USD/tháng (Single-AZ, ARM Graviton2).
+- *AWS EC2 (t3.small - Backend & Frontend)*: ~14.00 USD/tháng (Chạy Docker 24/7).
+- *AWS Bedrock Knowledge Base*: ~10.00 USD/tháng (Chi phí lưu trữ Vector & Search Queries).
+- *OpenAI API (GPT-4o-mini)*: ~5.00 USD/tháng (Chi phí Token theo lưu lượng thực tế).
+- *Amazon S3 Standard*: ~0.50 USD/tháng (5 GB Data Storage & Transfer).
+- *Amazon Cognito*: 0.00 USD/tháng (Miễn phí 50,000 MAU đầu tiên).
+- *AWS CloudWatch & Langfuse*: ~3.00 USD/tháng (Metrics, Logs, Alarms & LLM Monitoring).
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+*Tổng chi phí hạ tầng Cloud & AI*: ~44.50 USD/tháng.
 
 ### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+#### Ma trận rủi ro  
+- Trùng lịch khám do thao tác đồng thời (Race Condition): Ảnh hưởng cao, xác suất trung bình.
+- Bị ngắt kết nối API LLM (OpenAI / Bedrock Timeout): Ảnh hưởng trung bình, xác suất thấp.
+- AI phản hồi sai lệch tri thức y tế (Hallucination): Ảnh hưởng cao, xác suất thấp. 
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
-
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+#### Chiến lược giảm thiểu  
+- *Race Condition*: Sử dụng Pessimistic Locking (`FOR UPDATE`) trực tiếp từ tầng Database PostgreSQL khi chốt slot lịch.  
+- *API Timeout & Fallback*: Xây dựng luồng Fallback — Nếu API LLM gặp sự cố, hệ thống tự động chuyển bệnh nhân sang giao diện Đặt lịch khám trực tiếp.  
+- *Giảm Hallucination & Monitoring*: Sử dụng RAG qua **AWS Bedrock Knowledge Base** để khoanh vùng dữ liệu y tế chuẩn xác, kết hợp **Langfuse** theo dõi chất lượng và cảnh báo khi câu trả lời AI bất thường. 
 
 ### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+- **Cải tiến kỹ thuật:** Tự động hóa giải đáp thắc mắc y tế ban đầu cho bệnh nhân bằng RAG AI chính xác; đạt chỉ số sẵn sàng của hệ thống > 99.9% trên nền tảng AWS Cloud.  
+- **Giá trị thực tế:** Cung cấp giải pháp đặt lịch khám minh bạch, chính xác, giúp bệnh nhân chủ động thời gian và giúp bác sĩ dễ dàng quản lý danh sách ca khám.

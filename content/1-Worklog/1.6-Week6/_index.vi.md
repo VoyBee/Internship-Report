@@ -5,54 +5,31 @@ weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 6:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tích hợp dịch vụ **AWS CloudWatch** kết hợp **Langfuse** để giám sát (Monitoring), theo dõi hiệu năng hệ thống (CPU/Memory trên EC2, RDS PostgreSQL) và tập trung log hoạt động hệ thống cũng như log vận hành LLM.
+* Hoàn thiện giao diện **Admin Portal** (dành cho Quản trị viên) phục vụ quản lý nhân sự Bác sĩ, tài khoản người dùng (Cognito RBAC) và xem báo cáo thống kê vận hành hệ thống.
+* Hoàn thiện giao diện **Doctor Portal** tối ưu hóa công việc tra cứu: Cho phép Bác sĩ xem danh sách lịch hẹn đã đặt trong ngày và mở xem file báo cáo tóm tắt cuộc trò chuyện AI (Pre-consultation Report) từ Amazon S3.
+* Hoàn thiện giao diện **Patient Portal (Mobile View)**: Hỗ trợ cập nhật thông tin y tế cá nhân, trò chuyện tư vấn với Chatbot AI RAG (LLM Router + Bedrock KB + GPT-4o-mini) và chọn khung giờ đặt lịch khám.
+* Refactor mã nguồn, chuẩn hóa tài liệu API bằng **Swagger / OpenAPI Spec** và hoàn tất đóng gói toàn bộ ứng dụng.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2   | - Thiết lập **AWS CloudWatch Logs Agent** trên EC2 để thu thập log từ Backend NestJS và Frontend Next.js. <br>- Tích hợp đồng bộ log giám sát LLM từ **Langfuse** về CloudWatch Logs; cấu hình **CloudWatch Alarms** tự động cảnh báo khi CPU/RAM EC2 vượt 80% hoặc đụng độ khóa dữ liệu trên RDS PostgreSQL. | 06/07/2026 | 06/07/2026 | [Tại đây](<https://docs.aws.amazon.com/cloudwatch/>) |
+| 3   | - Hoàn thiện **Admin Portal** (Desktop UI): Xây dựng giao diện thêm mới/quản lý tài khoản Bác sĩ (gán nhóm Cognito `Doctor`), xem danh sách người dùng và thống kê tổng số lịch hẹn. <br>- Xây dựng giao diện cập nhật thông tin y tế cá nhân (nhóm máu, bệnh nền, dị ứng) cho Bệnh nhân. | 07/07/2026 | 07/07/2026 | [Tại đây](<https://docs.nestjs.com/techniques/database>) |
+| 4   | - Hoàn thiện **Doctor Portal** (Desktop UI): Xây dựng màn hình danh sách ca khám đã được bệnh nhân đặt, cho phép mở xem file báo cáo tư vấn **Pre-consultation Report** từ Amazon S3 bằng Presigned URL. | 08/07/2026 | 08/07/2026 | [Tại đây](<https://docs.nestjs.com/guards>) |
+| 5   | - Hoàn thiện **Patient Portal** (Mobile View): Tối ưu giao diện khung chat với AI Chatbot RAG tư vấn (hiển thị typing indicator, câu trả lời sinh từ GPT-4o-mini) và giao diện chọn khung giờ đặt lịch hẹn từ danh sách lịch làm việc trống của Bác sĩ. | 09/07/2026 | 09/07/2026 | [Tại đây](<https://nextjs.org/docs>) |
+| 6   | - Refactor cấu trúc Code Backend/Frontend, bổ sung Validation DTOs cho các đầu API. <br>- Chuẩn hóa và tự động sinh tài liệu RESTful API bằng **Swagger / OpenAPI Spec** (`@nestjs/swagger`); tiến hành chạy thử nghiệm toàn bộ hệ thống (End-to-End Test). | 10/07/2026 | 10/07/2026 | [Tại đây](<https://docs.nestjs.com/openapi/introduction>) |
 
 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Triển khai thành công hệ thống giám sát **AWS CloudWatch** kết hợp **Langfuse**, thu thập log tập trung và cấu hình cảnh báo Alarms giúp phát hiện sớm rủi ro sự cố hạ tầng cũng như bất thường trong luồng phản hồi AI.
+* Hoàn thiện **Admin Portal** hỗ trợ Quản trị viên dễ dàng quản lý danh mục Bác sĩ, phân quyền tài khoản Cognito và theo dõi số liệu vận hành.
+* Xây dựng thành công **Doctor Portal** giao diện tinh gọn, giúp Bác sĩ dễ dàng nắm bắt danh sách ca khám trong ngày và đọc báo cáo tóm tắt câu hỏi của bệnh nhân do AI RAG tổng hợp trước ca tư vấn.
+* Xây dựng giao diện **Patient Portal** thân thiện trên di động: hỗ trợ khai báo thông tin cá nhân, trò chuyện với Chatbot AI RAG tư vấn y tế và đặt lịch hẹn khám bệnh minh bạch.
+* Đóng gói và chuẩn hóa toàn bộ tài liệu RESTful API của hệ thống bằng **Swagger (OpenAPI Spec)**.
+* Rà soát, refactor lại toàn bộ mã nguồn, đảm bảo hệ thống vận hành an toàn, tin cậy, đạt chuẩn thiết kế Business Flow.
 
 

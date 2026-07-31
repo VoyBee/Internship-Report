@@ -5,111 +5,104 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+In this section, you will find a summary proposal for the development of the Digital Healthcare System, including objectives, AWS Cloud infrastructure architecture, core business flows, and estimated operational budgets.
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+# Smart Healthcare AI Triage & Appointment Booking Platform
+## Cloud-native Solution for AI-Powered Medical Triage and Online Appointment Management
 
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+The Smart Healthcare Platform is designed to modernize the intake process, handle preliminary medical Q&A, and facilitate online appointment bookings. The system incorporates a **Generative AI & RAG (Retrieval-Augmented Generation)** architecture combining **AWS Bedrock Knowledge Base**, the **ViMQ** medical entity extraction model, and the **GPT-4o-mini** LLM, while supporting the storage of **Pre-consultation Reports** generated from conversation summaries. Built on a Cloud-native architecture over **AWS Cloud** infrastructure (Cognito, EC2, RDS PostgreSQL, S3, CloudWatch) integrated with a dedicated LLM monitoring system (**Langfuse**), the platform serves the access needs of Patients, Doctors, and Administrators.
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+#### What’s the Problem?
+Healthcare facilities currently experience reception desk congestion because patients spend significant time inquiring about basic information. Traditional appointment booking processes via telephone or walk-ins frequently cause double-booking issues and extended waiting times. On the doctors' side, tracking appointment schedules and registered patient information remains manual and fragmented.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+#### The Solution 
+The platform provides a comprehensive solution covering end-to-end business phases:
+1. **Phase 1 - System Setup & Authorization (Auth Flow):** Admins manage and provision accounts on the system. **AWS Cognito** handles centralized identity management (RBAC), providing strict access control for Patient, Doctor, and Admin roles.
+2. **Phase 2 - Intake & Medical Onboarding:** Patients register/log in via the Mobile Web App. Patients can complete intake forms detailing personal information, medical history, and core health metrics.
+3. **Phase 3 - AI RAG Medical Assistant (LLM Pipeline Flow):**
+   - The [LLM Intent Router] receives questions and orchestrates processing: extracting medical entities via **ViMQ (Local Host)** and routing intent via **AWS Bedrock Knowledge Base**.
+   - The **GPT-4o-mini** model synthesizes knowledge and responds with accurate answers for the patient.
+   - The entire conversation flow is logged, with performance and token metrics monitored via **Langfuse** and **AWS CloudWatch**.
+4. **Phase 4 - Specialist Appointment Booking (Booking Flow):** Patients proactively select a doctor and an open time slot. **AWS RDS PostgreSQL** applies **Pessimistic Locking** mechanisms to eliminate 100% of double-booking risks (Race Conditions). Consultation chats can be automatically compiled into a **Pre-consultation Report** file stored in **Amazon S3**.
+5. **Phase 5 - Schedule Lookup & Management (Doctor/Patient Portal):** Doctors log into the Portal to review booked appointment schedules and look up patient personal information and medical history.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+#### Benefits and Return on Investment (ROI)
+- Reduce initial reception consultation time by 60% through 24/7 automated AI RAG inquiry responses delivering precise medical data.
+- Enable Doctors to seamlessly manage their daily work schedules and patient lists.
+- Eliminate 100% of appointment double-booking risks via Database-level Pessimistic Locking.
+- Guarantee AI response quality and safety via a centralized LLM monitoring system (**Langfuse**).
+- Optimize infrastructure operational costs thanks to the elastic scaling capabilities of AWS Cloud services.
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+The system utilizes a Multi-tier Web architecture combined with Hybrid AI services (Cloud Services + External SaaS + Local Host Services).
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+![Smart Healthcare AI Architecture](/images/2-Proposal/architect-diagram.png)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+#### AWS Services & Technologies Used
+- *Amazon Cognito*: Identity management, sign-in/sign-up, and RBAC authorization for Patients, Doctors, and Admins.
+- *AWS EC2*: Hosts the Web Frontend (Next.js) and Backend REST API / WebSocket Gateway / LLM Intent Router (NestJS) containerized via Docker.
+- *AWS Bedrock Knowledge Base*: Stores and retrieves medical knowledge bases (RAG Pipeline) for consultation.
+- *External SaaS & Local Models*: **GPT-4o-mini** (response generation), **ViMQ Local Host** (NER medical entity extraction), and **Langfuse** (monitoring LLM metrics, latency, and tokens).
+- *Amazon RDS (PostgreSQL)*: Relational database storing patient details, doctor information, and appointments with Pessimistic Locking (`FOR UPDATE`) mechanisms.
+- *Amazon S3*: Stores static assets, consultation chat history reports (PDF/JSON), and file attachments.
+- *AWS CloudWatch*: Collects Backend and EC2 system logs alongside aggregated logs from Langfuse.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
-
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+#### Component Design
+- *Patient Interface (Next.js - Mobile View)*: Allows patients to update personal profiles, chat with the AI RAG Assistant for medical inquiries, and perform appointment bookings.
+- *Doctor Interface (Next.js - Desktop View)*: Enables Doctors to log in, look up scheduled appointments, review patient medical backgrounds, and view AI consultation report files from S3.
+- *Admin Portal*: Manages doctor directories, user accounts, and views operational analytics reports.
+- *Backend Services (NestJS)*: Handles Business Logic, LLM Intent Router, RDS PostgreSQL database connections, S3, and AI APIs (Bedrock, GPT-4o-mini, ViMQ, Langfuse).
 
 ### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+**Implementation Phases**  
+The project is scheduled for deployment over **8 weeks** (2 months) across the following phases:  
+1. *Weeks 1 - 2*: Analyze Business Flow requirements, design AWS Hybrid AI Cloud Architecture, construct Database ERD, and initialize Base Source Code (Next.js + NestJS).
+2. *Weeks 3 - 4*: Configure AWS Cognito (RBAC Auth Flow), deploy AWS infrastructure (EC2, S3, RDS PostgreSQL), integrate Prisma ORM, and implement concurrency control (Pessimistic Locking).
+3. *Weeks 5 - 6*: Integrate RAG Pipeline (AWS Bedrock KB + GPT-4o-mini + ViMQ Local), connect Langfuse for LLM monitoring, complete Doctor lookup interfaces & Patient booking views.
+4. *Weeks 7 - 8*: Integrate AWS CloudWatch, perform load testing (Stress Test Concurrency Booking), package Docker containers, configure CI/CD pipelines, and finalize project hand-off.
 
 **Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+- *Frontend*: Next.js, TailwindCSS, Socket.io-client, React Query.
+- *Backend*: NestJS Framework, Prisma ORM, TypeScript, Socket.io.
+- *Database*: PostgreSQL 16.x on AWS RDS (`db.t4g.micro` - Private Subnet).
+- *AI/ML*: AWS Bedrock KB, OpenAI API (GPT-4o-mini), ViMQ Local Service, Langfuse.
+- *DevOps*: Docker, AWS CLI, GitHub Actions (CI/CD).
 
 ### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+*Project Timeline*
+- *Phase 1 (Weeks 1 - 2)*: Complete System Architecture & Database Schema designs according to the updated Business Flow.
+- *Phase 2 (Weeks 3 - 4)*: Successfully deploy AWS infrastructure (Cognito Auth Flow, RDS PostgreSQL, S3, EC2) & Booking Concurrency APIs.
+- *Phase 3 (Weeks 5 - 6)*: Successfully integrate RAG Pipeline (Bedrock + GPT-4o-mini + ViMQ), Langfuse monitoring, and Doctor schedule lookup portals.
+- *Phase 4 (Weeks 7 - 8)*: Complete concurrency booking stress tests, deploy CI/CD pipelines on AWS Cloud, and achieve project acceptance.
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+Infrastructure costs are estimated based on an AWS Cloud & AI Services environment for the testing phase (MVP / Development Phase):
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+*Monthly Infrastructure & Service Cost Breakdown*  
+- *AWS RDS (db.t4g.micro - PostgreSQL)*: ~$12.00 USD/month (Single-AZ, ARM Graviton2).
+- *AWS EC2 (t3.small - Backend & Frontend)*: ~$14.00 USD/month (Running Docker 24/7).
+- *AWS Bedrock Knowledge Base*: ~$10.00 USD/month (Vector Storage & Search Query costs).
+- *OpenAI API (GPT-4o-mini)*: ~$5.00 USD/month (Token costs based on actual usage).
+- *Amazon S3 Standard*: ~$0.50 USD/month (5 GB Data Storage & Transfer).
+- *Amazon Cognito*: $0.00 USD/month (First 50,000 MAUs Free).
+- *AWS CloudWatch & Langfuse*: ~$3.00 USD/month (Metrics, Logs, Alarms & LLM Monitoring).
 
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+*Total Monthly Cloud & AI Infrastructure Cost*: ~$44.50 USD/month.
 
 ### 7. Risk Assessment
 #### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+- Concurrent booking conflicts (Race Condition): High impact, medium probability.
+- Disconnected LLM APIs (OpenAI / Bedrock Timeout): Medium impact, low probability.
+- AI response hallucination of medical knowledge (Hallucination): High impact, low probability.
 
 #### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+- *Race Condition*: Apply Pessimistic Locking (`FOR UPDATE`) directly at the PostgreSQL Database layer during slot confirmation.  
+- *API Timeout & Fallback*: Build Fallback flows — If LLM APIs encounter failure, the system automatically transitions the patient to the direct Appointment Booking interface.  
+- *Hallucination Reduction & Monitoring*: Utilize RAG via **AWS Bedrock Knowledge Base** to isolate accurate medical data, combined with **Langfuse** to track response quality and trigger alerts on anomalous AI answers.
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+- **Technical Improvements:** Automate initial patient medical consultations using precise RAG AI; achieve system availability metrics > 99.9% on AWS Cloud.  
+- **Practical Value:** Provide a transparent and accurate appointment booking solution, empowering patients to manage their schedules while enabling doctors to easily manage daily consultation workflows.

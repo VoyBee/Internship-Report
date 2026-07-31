@@ -5,53 +5,29 @@ weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 1 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Conduct general research on modern Web application architectures, Cloud Computing, and Hybrid AI Services models (Cloud + External SaaS + Local Host).
+* Study core AWS infrastructure services (**Cognito, EC2, S3, RDS PostgreSQL, CloudWatch, Bedrock Knowledge Base, IAM, VPC**) alongside auxiliary AI services (**GPT-4o-mini**, **ViMQ Local**, **Langfuse**) applied to the Smart Healthcare Platform.
+* Analyze and select an appropriate architecture model for the application (Multi-tier Microservices on Docker) and design a comprehensive AWS Well-Architected Hybrid AI Cloud infrastructure diagram.
+* Perform a detailed analysis of the core **Business Flow** comprising 5 phases: Auth infrastructure authorization (Cognito RBAC), Patient Onboarding, AI RAG Medical Assistant Chatbot, Anti-slot-conflict Booking (Pessimistic Locking), and Doctor Schedule Lookup.
+* Prepare the local development environment and initialize the project with Responsive Next.js (Frontend) and NestJS (Backend & LLM Intent Router).
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| Mon | - Conduct general research on Cloud Computing (IaaS, PaaS, SaaS) and the benefits of deploying Healthcare Web applications on the Cloud.<br>- Analyze the 3-Tier Web Architecture model combined with the RAG AI pipeline applied to the project. | 06/01/2026 | 06/01/2026 | [Here](https://aws.amazon.com/what-is-cloud-computing/) |
+| Tue | - Study core AWS services: **AWS Cognito** (Auth & RBAC), **EC2** (Docker Containers), **S3** (Attachment Storage / AI Pre-consultation Report), **RDS PostgreSQL** (`db.t4g.micro`), **AWS Bedrock Knowledge Base** (RAG Pipeline).<br>- Study integrated AI services: **GPT-4o-mini** (Inference), **ViMQ** (Local Medical NER), **Langfuse** (LLM Monitoring). | 06/02/2026 | 06/02/2026 | [Here](https://docs.aws.amazon.com/) |
+| Wed | - Research Cloud security solutions: Access management with **AWS IAM**, secure network partitioning with **AWS VPC** (Public/Private Subnets).<br>- Study healthcare data security standards (Anonymous UUID encryption, JWT Token verification, At-Rest & In-Transit data encryption via SSL/TLS). | 06/03/2026 | 06/03/2026 | [Here](https://docs.aws.amazon.com/iam/) |
+| Thu | - Install development tools: **AWS CLI**, **Node.js**, **Docker Desktop**, **WSL 2**, and configure AWS IAM accounts.<br>- Initialize the GitHub repository and configure the project directory structure for Frontend (Next.js) and Backend (NestJS Framework). | 06/04/2026 | 06/04/2026 | [Here](https://docs.aws.amazon.com/cli/) |
+| Fri | - Draft and render the Hybrid AI Cloud infrastructure architecture diagram (**AWS Architecture Diagram**) for the Smart Healthcare Platform.<br>- Prepare technical requirement analysis documentation and finalize core **Business Flow** details (Cognito RBAC Auth Flow, Medical Intake Form, AI RAG Consultation Chatbot, Booking concurrency with Pessimistic Locking, and Doctor Portal lookup). | 06/05/2026 | 06/05/2026 | [Here](https://aws.amazon.com/architecture/) |
 
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Mastered multi-tier Web architecture, the RAG AI pipeline, and foundational cloud computing theories alongside core AWS services applied to healthcare projects.
+* Completed an AWS Well-Architected **AWS Architecture Diagram** for the Hybrid AI Cloud infrastructure, clearly defining deployment locations for Public/Private Subnets, Docker Containers on EC2, S3, RDS PostgreSQL, AWS Bedrock KB, GPT-4o-mini, ViMQ, and Langfuse.
+* Finalized the complete core **Business Flow** analysis documentation detailing 5 phases from Cognito Auth, Onboarding, AI RAG Consultation Chatbot, Anti-slot-conflict Booking to the Doctor Portal schedule lookup.
+* Gained a clear understanding of secure network partitioning mechanisms (VPC, Public/Private Subnets) and user/service access authorization using AWS IAM & Cognito (utilizing anonymous UUIDs).
+* Successfully initialized the local development environment and initial source codebases for **Next.js** and **NestJS**, pre-connected to GitHub.
