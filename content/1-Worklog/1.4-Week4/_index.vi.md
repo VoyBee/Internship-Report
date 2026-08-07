@@ -5,55 +5,37 @@ weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu tuần 4
 
-### Mục tiêu tuần 4:
+* Tìm hiểu các giải pháp mở rộng và tối ưu hệ thống trên AWS.
+* Khám phá các dịch vụ giám sát và quản lý chi phí của AWS.
+* Hiểu về Amazon Route 53 và cơ chế phân giải DNS.
+* Thực hành quản lý tài nguyên AWS bằng AWS CLI.
+* Bắt đầu triển khai các chức năng Backend đầu tiên cho dự án Snaptics.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Công việc thực hiện trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|------|-----------|-------------|----------------|-------------------|
+| 2 | **Khả năng mở rộng trên AWS:** <br> - Tìm hiểu Elastic Load Balancer (ELB) <br> - Nghiên cứu Auto Scaling Group (ASG) <br> - Tìm hiểu cơ chế tự động mở rộng tài nguyên trên AWS | 01/06/2026 | 01/06/2026 | https://000006.awsstudygroup.com/ |
+| 3 | **Giám sát hệ thống:** <br> - Tìm hiểu Amazon CloudWatch <br> - Nghiên cứu Metrics, Logs và Alarms <br> - Thực hành giám sát tài nguyên AWS | 02/06/2026 | 02/06/2026 | https://000008.awsstudygroup.com/ |
+| 4 | **Quản lý chi phí:** <br> - Tìm hiểu AWS Budget <br> - Thiết lập theo dõi ngân sách và cảnh báo <br> - Tìm hiểu các phương pháp quản lý chi phí trên AWS | 03/06/2026 | 03/06/2026 | https://000007.awsstudygroup.com/ |
+| 5 | **Phát triển dự án:** <br> - Bắt đầu phát triển Backend cho dự án Snaptics <br> - Xây dựng và tổ chức các module Backend ban đầu cùng các thành phần hỗ trợ | 04/06/2026 | 04/06/2026 | |
+| 6 | **Route 53 và AWS CLI:** <br> - Tìm hiểu Amazon Route 53 và DNS <br> - Thực hành các lệnh AWS CLI <br> - Ôn tập quy trình quản lý tài nguyên AWS | 05/06/2026 | 05/06/2026 | https://000010.awsstudygroup.com/ <br> https://000011.awsstudygroup.com/ |
 
+### Kết quả đạt được trong tuần
 
-### Kết quả đạt được tuần 4:
+* Hiểu được vai trò của Elastic Load Balancer và Auto Scaling trong việc xây dựng hệ thống có khả năng mở rộng.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Có kinh nghiệm thực hành với Amazon CloudWatch để giám sát tài nguyên AWS.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Nắm được cách sử dụng AWS Budget để theo dõi và kiểm soát chi phí.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Hiểu rõ hơn về dịch vụ DNS trên AWS thông qua Amazon Route 53.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Thực hành quản lý tài nguyên AWS bằng AWS CLI.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Bắt đầu triển khai các chức năng Backend cho dự án Snaptics.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Mở rộng kiến thức về các dịch vụ mở rộng, giám sát, mạng và vận hành hệ thống trên AWS.

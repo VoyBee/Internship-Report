@@ -1,59 +1,31 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+date: 2026-06-29
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu tuần 8
 
-### Mục tiêu tuần 8:
+* Thiết lập hệ thống hàng đợi tin nhắn bất đồng bộ bằng Amazon SQS.
+* Cấu hình Background Worker xử lý ngầm.
+* Tích hợp thành công công nghệ AI (Azure Document Intelligence) để đọc hóa đơn.
+* Đẩy thông báo thời gian thực về phía người dùng qua WebSockets.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|------|-----------|-------------|----------------|---------------|
+| 2 | **Amazon SQS:** <br> - Tìm hiểu Amazon Simple Queue Service <br> - Khởi tạo Standard Queue <br> - Hiểu và cấu hình cơ chế Visibility Timeout | 29/06/2026 | 29/06/2026 | |
+| 3 | **Background Processing:** <br> - Viết IHostedService trên .NET <br> - Cấu hình Worker kéo tin nhắn từ SQS <br> - Quản lý vòng đời tin nhắn trong Queue | 30/06/2026 | 30/06/2026 | |
+| 4 | **Azure Document Intelligence:** <br> - Đăng ký dịch vụ Azure OCR <br> - Lưu trữ an toàn API Key bằng AWS Parameter Store <br> - Tích hợp mã gọi API phân tích hóa đơn vào Worker | 01/07/2026 | 01/07/2026 | |
+| 5 | **Xử lý dữ liệu AI:** <br> - Parse chuỗi JSON kết quả từ Azure <br> - Mapping thông tin vào các trường Database <br> - Bổ sung logic xử lý các trường hợp dữ liệu thiếu/lỗi | 02/07/2026 | 02/07/2026 | |
+| 6 | **Real-time SignalR:** <br> - Tìm hiểu công nghệ WebSockets và SignalR <br> - Cấu hình SignalR Hub trên Backend <br> - Tích hợp đẩy thông báo hoàn tất quét hóa đơn về Frontend | 03/07/2026 | 03/07/2026 | |
 
+### Kết quả đạt được tuần 8
 
-### Kết quả đạt được tuần 8:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tích hợp kiến trúc bất đồng bộ bằng SQS, nâng cao hiệu suất xử lý tác vụ nặng.
+* Khai thác thành công API trí tuệ nhân tạo để tự động hóa trích xuất dữ liệu.
+* Làm quen với bảo mật cấu hình ứng dụng thông qua AWS Parameter Store.
+* Nâng tầm trải nghiệm người dùng (UX) bằng thông báo Real-time mượt mà.

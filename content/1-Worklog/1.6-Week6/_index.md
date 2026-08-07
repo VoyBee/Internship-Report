@@ -1,57 +1,32 @@
 ---
 title: "Week 6 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-06-15
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### Week 6 Objectives
 
-### Week 6 Objectives:
+* Complete the core Transaction Management APIs.
+* Initialize the Frontend SPA project using the Angular Framework.
+* Set up routing security (Route Guards) on the Frontend.
+* Integrate Authentication API connections between Frontend and Backend.
+* Configure automatic attachment of security Tokens to HTTP Requests.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Tasks Completed During the Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Tasks | Start Date | Completion Date | Reference Material |
+|------|-----------|-------------|----------------|---------------|
+| Monday | **Transaction API Development:** <br> - Build Add, Edit, Delete transaction features <br> - Write queries to fetch transaction lists <br> - Implement data Pagination | 15/06/2026 | 15/06/2026 | |
+| Tuesday | **Frontend SPA Initialization:** <br> - Initialize the Angular project <br> - Set up Frontend folder structure <br> - Install TailwindCSS and Material UI libraries | 16/06/2026 | 16/06/2026 | |
+| Wednesday | **Frontend Route Security:** <br> - Learn about and deploy Angular AuthGuard <br> - Protect pages requiring login <br> - Handle secure local JWT Token storage logic | 17/06/2026 | 17/06/2026 | |
+| Thursday | **Authentication API Integration:** <br> - Write Services to call Backend APIs <br> - Integrate Login and Registration forms <br> - Configure CORS permissions on the Backend | 18/06/2026 | 18/06/2026 | |
+| Friday | **HTTP Interceptor Integration:** <br> - Build an Angular HttpInterceptor <br> - Automatically attach Bearer Tokens to Headers <br> - Handle navigation flows when Tokens expire (401 Error) | 19/06/2026 | 19/06/2026 | |
 
+### Week 6 Achievements
 
-### Week 6 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully built the entire Backend flow for processing Transaction data.
+* Successfully initialized the Angular Frontend with a modern UI using TailwindCSS.
+* Established smooth connectivity between Backend and Frontend via authentication APIs.
+* Ensured application security through professional Route Guards and Http Interceptor mechanisms.

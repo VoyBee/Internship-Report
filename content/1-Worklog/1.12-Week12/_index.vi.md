@@ -1,58 +1,31 @@
 ---
 title: "Worklog Tuần 12"
-date: 2024-01-01
-weight: 2
+date: 2026-07-27
+weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-### Mục tiêu tuần 12:
+### Mục tiêu tuần 12
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Thực hiện Code Freeze, tập trung làm mịn hệ thống.
+* Đấu nối 100% dữ liệu thật, loại bỏ hoàn toàn các cấu phần thử nghiệm.
+* Cải thiện trải nghiệm người dùng (UX Polishing).
+* Hoàn thiện tính năng xác thực tài khoản qua Email.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc thực hiện trong tuần
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|------|-----------|-------------|----------------|---------------|
+| 2 | **Dọn dẹp hệ thống:** <br> - Đồng bộ tài liệu Swagger API <br> - Xóa bỏ toàn bộ Mock Data trên Frontend <br> - Đấu nối Frontend trực tiếp với API Backend | 27/07/2026 | 27/07/2026 | |
+| 3 | **Xử lý Empty States:** <br> - Quản lý trạng thái dữ liệu rỗng (chưa có giao dịch) <br> - Xây dựng màn hình điều hướng (Empty State) <br> - Xử lý Optional Chaining an toàn trên Frontend | 28/07/2026 | 28/07/2026 | |
+| 4 | **UX Polishing:** <br> - Xây dựng các UI Skeleton Loading <br> - Tích hợp Toast Notifications thông báo kết quả <br> - Bắt và hiển thị lỗi thân thiện (Lỗi 500, Lỗi mạng) | 29/07/2026 | 29/07/2026 | |
+| 5 | **Tối ưu Responsive Mobile:** <br> - Khắc phục lỗi vỡ layout trên điện thoại <br> - Tối ưu Menu Navigation bar <br> - Xử lý lỗi cuộn trang (Scrolling) trên thiết bị iOS | 30/07/2026 | 30/07/2026 | |
+| 6 | **Amazon SES:** <br> - Cấu hình dịch vụ Simple Email Service (SES) <br> - Xây dựng luồng Gửi Email chứa mã OTP <br> - Đóng băng mã nguồn, chuẩn bị triển khai | 31/07/2026 | 31/07/2026 | |
 
-### Kết quả đạt được tuần 12:
+### Kết quả đạt được tuần 12
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Ứng dụng chạy mượt mà 100% bằng dữ liệu thật từ Database.
+* Khắc phục triệt để các rủi ro làm treo (crash) Frontend.
+* Giao diện UI/UX được nâng cấp chỉn chu, thân thiện và chuyên nghiệp.
+* Mã nguồn đạt trạng thái ổn định (Stable) sẵn sàng ra mắt.

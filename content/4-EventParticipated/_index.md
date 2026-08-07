@@ -6,39 +6,44 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** for your report, including this warning.
-{{% /notice %}}
+> This section records the technical events I attended during the internship. The sessions helped me connect the AWS lessons from the training with examples shared by people who work on real products.
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
+I joined four sessions covering AWS architecture, AI services, security, careers and team projects. I mainly attended and took notes, then selected the parts that could support my own cloud and software development work.
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+### [Event 1](4.1-Event1/)
+&emsp;**Event:** AWS Technical Sharing Session
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Date & Time:** June 5, 2026
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Role:** Attendee
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
-
-&emsp;**Role:** Attendee  
+&emsp;**Location:** Bitexco Financial Tower, District 1, Ho Chi Minh City
 
 ---
 
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+### [Event 2](4.2-Event2/)
+&emsp;**Event:** AWS: Enterprise Cloud Architectures and Industry Application featuring Cloud Kinetics & Renova Cloud
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Date & Time:** July 4, 2026
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Role:** Attendee
 
-&emsp;**Role:** Attendee  
+&emsp;**Location:** Bitexco Financial Tower, District 1, Ho Chi Minh City
+
+### [Event 3](4.3-Event3/)
+&emsp;**Event:** AI From Scratch
+
+&emsp;**Date & Time:** July 18, 2026
+
+&emsp;**Role:** Attendee
+
+&emsp;**Location:** Room LB 24 (2nd Floor) - FPTU HCMC Library
+
+### [Event 4](4.4-Event4/)
+&emsp;**Event:** FCAJ – Agentic AI Build Week
+
+&emsp;**Date & Time:** July 4, 2026
+
+&emsp;**Role:** Attendee
+
+&emsp;**Location:** Bitexco Financial Tower, District 1, Ho Chi Minh City

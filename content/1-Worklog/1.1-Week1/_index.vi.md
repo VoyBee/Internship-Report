@@ -5,55 +5,34 @@ weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu tuần 1
 
-### Mục tiêu tuần 1:
+* Làm quen với chương trình First Cloud AI Journey (FCAJ) và lộ trình thực tập.
+* Tìm hiểu các khái niệm cơ bản về Điện toán đám mây (Cloud Computing) và hệ sinh thái AWS.
+* Thiết lập tài khoản AWS phục vụ cho học tập và thực hành.
+* Tìm hiểu AWS Identity and Access Management (IAM) và các cơ chế bảo mật tài khoản cơ bản.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|------|-----------|-------------|----------------|---------------|
+| 2 | - Đọc nội quy và hướng dẫn của chương trình thực tập <br> - Tìm hiểu lộ trình học tập FCAJ | 11/05/2026 | 11/05/2026 | |
+| 3 | - Tìm hiểu về AWS và Cloud Computing <br> - Nghiên cứu các nhóm dịch vụ chính trên AWS: Compute, Storage, Database, Networking <br> - Tìm hiểu AWS Global Infrastructure | 12/05/2026 | 12/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - Tìm hiểu AWS Free Tier và AWS Credit <br> - Tạo AWS Account <br> - Thiết lập Virtual MFA cho tài khoản AWS | 13/05/2026 | 13/05/2026 | https://000001.awsstudygroup.com/ |
+| 5 | - Tìm hiểu AWS IAM <br> - Tạo IAM User và IAM Group <br> - Tìm hiểu IAM Policy và phân quyền người dùng | 14/05/2026 | 14/05/2026 | https://000002.awsstudygroup.com/ |
+| 6 | - Tìm hiểu IAM Role <br> - Thực hành Switch Role <br> - Dọn dẹp tài nguyên thực hành và tổng kết kiến thức tuần | 15/05/2026 | 15/05/2026 | https://000002.awsstudygroup.com/ |
 
+### Kết quả đạt được trong tuần 1
 
-### Kết quả đạt được tuần 1:
+* Nắm được các khái niệm cơ bản về Điện toán đám mây và các nhóm dịch vụ chính trên AWS.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hiểu kiến trúc hạ tầng toàn cầu của AWS, bao gồm Regions, Availability Zones và Edge Locations.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Hoàn thành việc tạo tài khoản AWS và tăng cường bảo mật bằng cách kích hoạt Virtual MFA.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Nắm được các khái niệm cốt lõi của AWS Identity and Access Management (IAM), bao gồm Users, Groups, Policies, Roles và Switch Roles.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Hiểu các nguyên tắc cơ bản về quản lý quyền truy cập và bảo mật tài khoản trên AWS.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hoàn thành giai đoạn học tập nền tảng, tạo tiền đề cho các nội dung về mạng và hạ tầng AWS trong các tuần tiếp theo.

@@ -5,53 +5,38 @@ weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### Week 2 Objectives
 
-### Week 2 Objectives:
+* Learn the fundamentals of AWS networking with Amazon VPC.
+* Understand key networking components such as Subnets, Route Tables, and Internet Gateways.
+* Explore network security mechanisms using Security Groups and Network ACLs.
+* Practice deploying Amazon EC2 instances within a VPC environment.
+* Learn advanced networking connectivity concepts including NAT Gateway and Site-to-Site VPN.
+* Begin discussing project ideas and identifying potential AWS services for the group project.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Activities Completed During This Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Tasks | Start Date | Completion Date | References |
+|------|---------|-------------|----------------|------------|
+| 2 | **Project Orientation:** <br> - Discussed group project ideas <br> - Researched AWS services suitable for the project <br> - Identified initial business objectives and system scope | 18/05/2026 | 18/05/2026 | |
+| 3 | **VPC Fundamentals:** <br> - Learned Amazon VPC concepts <br> - Studied Subnets, Route Tables, and Internet Gateway (IGW) <br> - Configured Security Groups and Network ACLs (NACLs) | 19/05/2026 | 19/05/2026 | https://000003.awsstudygroup.com/ |
+| 4 | **EC2 Deployment:** <br> - Created Amazon EC2 Instances <br> - Tested SSH connectivity <br> - Practiced deploying EC2 instances in both Public and Private Subnets | 20/05/2026 | 20/05/2026 | https://000003.awsstudygroup.com/ |
+| 5 | **NAT Gateway Deployment:** <br> - Learned Internet access architecture for Private Subnets <br> - Configured NAT Gateway <br> - Tested outbound connectivity from Private EC2 instances | 21/05/2026 | 21/05/2026 | https://000003.awsstudygroup.com/|
+| 6 | **Site-to-Site VPN:** <br> - Learned AWS Site-to-Site VPN concepts <br> - Studied Virtual Private Gateway and Customer Gateway <br> - Practiced basic VPN configuration | 22/05/2026 | 22/05/2026 | https://000003.awsstudygroup.com/ |
 
+### Week 2 Achievements
 
-### Week 2 Achievements:
+* Understood the role of Amazon Virtual Private Cloud (VPC) and its core networking components, including Subnets, Route Tables, and Internet Gateway.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained practical knowledge of AWS network security through Security Groups and Network ACLs (NACLs).
 
-* Successfully created and configured an AWS Free Tier account.
+* Successfully deployed Amazon EC2 instances and established SSH connectivity within a VPC environment.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Learned how NAT Gateway enables Internet access for resources located in Private Subnets.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Understood the fundamentals of AWS Site-to-Site VPN and hybrid network connectivity.
 
-* Used AWS CLI to perform basic operations such as:
+* Defined the initial scope and development direction of the Snaptics group project.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Completed hands-on labs related to VPC configuration, EC2 deployment, and AWS networking services.

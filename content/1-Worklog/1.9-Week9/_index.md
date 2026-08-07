@@ -1,57 +1,31 @@
 ---
 title: "Week 9 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-06
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### Week 9 Objectives
 
-### Week 9 Objectives:
+* Integrate Google Gemini AI to provide smart financial advice.
+* Optimize database queries on Amazon RDS.
+* Build a visual expense reporting and statistics interface.
+* Get familiar with charting libraries on the Frontend.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Tasks Completed During the Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Tasks | Start Date | Completion Date | Reference Material |
+|------|-----------|-------------|----------------|---------------|
+| Monday | **Google Gemini AI:** <br> - Register for a Gemini API Key <br> - Integrate the SDK into the Backend <br> - Write basic Prompts for financial data | 06/07/2026 | 06/07/2026 | |
+| Tuesday | **AI Data Analysis:** <br> - Write APIs to send/receive data to/from AI <br> - Force JSON formatting for returned results <br> - Build a Chatbot UI on the Frontend | 07/07/2026 | 07/07/2026 | |
+| Wednesday | **Report Query Optimization:** <br> - Write SQL Queries for expense statistics <br> - Create Indexes on RDS to optimize speed <br> - Build APIs returning report figures | 08/07/2026 | 08/07/2026 | |
+| Thursday | **Ngx-charts Library:** <br> - Install the Ngx-charts library <br> - Build Pie Charts for spending structures <br> - Build Bar Charts for 6-month trends | 09/07/2026 | 09/07/2026 | |
+| Friday | **Analysis UI Finalization:** <br> - Handle chart Responsive design on mobile <br> - Integrate AI Insights into the screen <br> - Test the entire reporting flow | 10/07/2026 | 10/07/2026 | |
 
+### Week 9 Achievements
 
-### Week 9 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Unlocked the power of Generative AI applied to real-world business logic.
+* Accumulated skills in database performance optimization (Database Indexing).
+* Finalized the Reporting module with visual, dynamic charts.
+* Ensured UI consistency across multiple mobile devices.

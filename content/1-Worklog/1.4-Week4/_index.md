@@ -5,53 +5,37 @@ weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+### Week 4 Objectives
 
-### Week 4 Objectives:
+* Learn AWS services for scalability and system optimization.
+* Explore AWS monitoring and cost management services.
+* Understand Amazon Route 53 and DNS resolution concepts.
+* Practice managing AWS resources using AWS CLI.
+* Begin implementing the initial backend functionalities for the Snaptics project.
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+### Activities Completed During This Week
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Tasks | Start Date | Completion Date | References |
+|------|---------|-------------|----------------|------------|
+| 2 | **Scalability on AWS:** <br> - Learn about Elastic Load Balancer (ELB) <br> - Explore Auto Scaling Group (ASG) <br> - Understand automatic resource scaling on AWS | 01/06/2026 | 01/06/2026 | https://000006.awsstudygroup.com/ |
+| 3 | **System Monitoring:** <br> - Learn Amazon CloudWatch <br> - Explore Metrics, Logs, and Alarms <br> - Practice monitoring AWS resources | 02/06/2026 | 02/06/2026 | https://000008.awsstudygroup.com/ |
+| 4 | **Cost Management:** <br> - Learn AWS Budget <br> - Configure budget tracking and alerts <br> - Explore AWS cost management best practices | 03/06/2026 | 03/06/2026 | https://000007.awsstudygroup.com/ |
+| 5 | **Project Development:** <br> - Begin backend development for the Snaptics project <br> - Develop and organize the initial backend modules and supporting components | 04/06/2026 | 04/06/2026 | |
+| 6 | **Route 53 and AWS CLI:** <br> - Learn Amazon Route 53 and DNS concepts <br> - Practice AWS CLI commands <br> - Review AWS resource management workflows | 05/06/2026 | 05/06/2026 | https://000010.awsstudygroup.com/ <br> https://000011.awsstudygroup.com/ |
 
+### Week 4 Achievements
 
-### Week 4 Achievements:
+* Understood the role of Elastic Load Balancer and Auto Scaling in building scalable systems.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained hands-on experience with Amazon CloudWatch for monitoring AWS resources.
 
-* Successfully created and configured an AWS Free Tier account.
+* Learned how to use AWS Budget to monitor and control cloud costs.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Improved understanding of AWS DNS services through Amazon Route 53.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Practiced managing AWS resources using AWS CLI.
 
-* Used AWS CLI to perform basic operations such as:
+* Started implementing the initial backend functionalities for the Snaptics project.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Expanded knowledge of AWS services for scalability, monitoring, networking, and system operations.

@@ -1,59 +1,31 @@
 ---
 title: "Worklog Tuần 7"
-date: 2024-01-01
-weight: 1
+date: 2026-06-22
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu tuần 7
 
-### Mục tiêu tuần 7:
+* Triển khai hệ thống cơ sở dữ liệu lên môi trường Cloud.
+* Thực hiện di chuyển dữ liệu (Migration) từ môi trường Local.
+* Thiết lập hệ thống lưu trữ tĩnh trên AWS S3.
+* Tích hợp thành công luồng tải ảnh an toàn bằng Pre-signed URL.
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+|------|-----------|-------------|----------------|---------------|
+| 2 | **Triển khai Database lên AWS:** <br> - Xem xét kiến trúc mạng VPC <br> - Tạo DB Subnet Group <br> - Khởi tạo RDS SQL Server trong Private Subnet | 22/06/2026 | 22/06/2026 | |
+| 3 | **Migration Database:** <br> - Xuất dữ liệu từ Local SQL Server <br> - Chạy script migrate schema và data lên RDS <br> - Cập nhật Connection String của Backend | 23/06/2026 | 23/06/2026 | |
+| 4 | **Amazon S3:** <br> - Tìm hiểu dịch vụ lưu trữ Amazon S3 <br> - Tạo S3 Bucket lưu trữ ảnh hóa đơn <br> - Cấu hình bảo mật chặn Public Access | 24/06/2026 | 24/06/2026 | |
+| 5 | **Tích hợp S3 SDK:** <br> - Cài đặt thư viện AWS SDK for .NET <br> - Viết service sinh Pre-signed URL <br> - Xử lý logic tải ảnh thông qua Backend | 25/06/2026 | 25/06/2026 | |
+| 6 | **Kiểm thử luồng Upload:** <br> - Tích hợp gọi API upload từ Frontend Angular <br> - Xử lý cấu hình CORS trên S3 Bucket <br> - Kiểm tra toàn bộ luồng lưu trữ hình ảnh E2E | 26/06/2026 | 26/06/2026 | |
 
+### Kết quả đạt được tuần 7
 
-### Kết quả đạt được tuần 7:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Đưa thành công cơ sở dữ liệu lên nền tảng Amazon RDS với độ bảo mật cao.
+* Nắm vững quy trình Migration dữ liệu an toàn.
+* Thiết lập hoàn chỉnh kho lưu trữ Amazon S3.
+* Triển khai luồng Upload ảnh an toàn, bảo mật thông qua Pre-signed URL.
