@@ -25,7 +25,9 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 07/09/2026 đến ngày 14/12/2026
 
-![Ảnh đại diện của bạn](/Internship-Report/images/IMG_6933.png)
+<p align="center">
+  <img src="/Internship-Report/images/avatar.jpg" alt="Ảnh đại diện" width="200">
+</p>
 
 
 
